@@ -1,0 +1,85 @@
+<div class="card params m-3">
+  <h3 class="card-header">River Parameters</h3>
+  <div class="card-body">
+    <div class="row g-2">
+      <div class="col-sm-6 input-double">
+        <label for="river_mannings_no">Manning's No.</label>
+        <div class="input-group">
+          <input
+            type="text"
+            id="river_mannings_no"
+            name="river_mannings_no"
+            value="{{ defaults.river_mannings_no }}"
+            class="no_negs_no_commas_regex form-control"
+            required
+          />
+          <span class="input-group-text units"> - </span>
+        </div>
+      </div>
+
+      <div class="col-sm-6 input-double">
+        <label for="river_bod_decay_rate_day">BOD Decay Rate</label>
+        <div class="input-group">
+          <input
+            type="text"
+            id="river_bod_decay_rate_day"
+            name="river_bod_decay_rate_day"
+            value="{{ defaults.river_bod_decay_rate_day }}"
+            class="no_negs_no_commas_regex form-control"
+            required
+          />
+          <span class="input-group-text units"> l/day </span>
+        </div>
+      </div>
+
+      <div class="col-sm-6 input-double">
+        <label for="river_nh3_decay_rate_day">NH<sub>3</sub> Decay Rate</label>
+        <div class="input-group">
+          <input
+            type="text"
+            id="river_nh3_decay_rate_day"
+            name="river_nh3_decay_rate_day"
+            value="{{ defaults.river_nh3_decay_rate_day }}"
+            class="no_negs_no_commas_regex form-control"
+            required
+          />
+          <span class="input-group-text units"> l/day </span>
+        </div>
+      </div>
+
+      <div class="col-sm-6 input-double">
+        <label for="river_nh3_yield_factor_gN_gO2"
+          >NH<sub>3</sub> Yield Factor
+        </label>
+        <div class="input-group">
+          <input
+            type="text"
+            id="river_nh3_yield_factor_gN_gO2"
+            name="river_nh3_yield_factor_gN_gO2"
+            value="{{ defaults.river_nh3_yield_factor_gN_gO2 }}"
+            class="no_negs_no_commas_regex form-control"
+            required
+          />
+          <span class="input-group-text units"> gO<sub>2</sub>/gN </span>
+        </div>
+      </div>
+
+      <div class="col-sm-6 input-double">
+        <label for="river_nh3_gain_bod_gN_gO2"
+          >NH<sub>3</sub> Gain from BOD decay
+        </label>
+        <div class="input-group">
+          <input
+            type="text"
+            id="river_nh3_gain_bod_gN_gO2"
+            name="river_nh3_gain_bod_gN_gO2"
+            value="{{ defaults.river_nh3_gain_bod_gN_gO2 }}"
+            class="no_negs_no_commas_regex form-control"
+            required
+          />
+          <span class="input-group-text units"> gN/gO<sub>2</sub> </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

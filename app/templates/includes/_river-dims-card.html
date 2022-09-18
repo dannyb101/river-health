@@ -1,0 +1,70 @@
+<div class="card m-3">
+  <h3 class="card-header">River Dimensions</h3>
+  <div class="card-body">
+
+    <div class="row g-2">
+
+      <div class="col-sm-6 input-double">
+        <label for="river_length_stretch_m">Length</label>
+        <div class="input-group">
+          <input
+          type="text"
+          id="river_length_stretch_m"
+          name="river_length_stretch_m"
+          value="{{ defaults.river_length_stretch_m }}"
+          class="no_negs_no_commas_regex form-control"
+          required
+        />
+        <span class="input-group-text units">m</span>   
+        </div>
+        
+      </div>
+
+      <div class="col-sm-6 input-double">
+        <label for="river_longslope_m_m">Long Slope</label>
+        <div class="input-group">
+          <input
+            type="text"
+            id="river_longslope_m_m"
+            name="river_longslope_m_m"
+            value="{{ defaults.river_longslope_m_m }}"
+            class="no_negs_no_commas_regex form-control"
+            required
+          />
+        <span class="input-group-text units">m/m</span>  
+        </div>
+      </div>
+
+      <div class="col-sm-6 input-double">
+        <label for="river_bedwidth_m">Bed Width</label>
+        <div class="input-group">
+          <input
+            type="text"
+            id="river_bedwidth_m"
+            name="river_bedwidth_m"
+            value="{{ defaults.river_bedwidth_m }}"
+            class="no_negs_no_commas_regex form-control"
+            required
+          />
+          <span class="input-group-text units">m</span>  
+        </div>
+      </div>
+
+      <div class="col-sm-6 input-double">
+        <label for="river_sideslope_m_m">Slide Slope</label>
+        <div class="input-group">
+          <input
+            type="text"
+            id="river_sideslope_m_m"
+            name="river_sideslope_m_m"
+            value="{{ defaults.river_sideslope_m_m }}"
+            class="no_negs_no_commas_regex form-control"
+            required
+          />
+          <span class="input-group-text units">m/m</span> 
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="card m-3">
+    <h3 class="card-header">Download data</h3>
+    <div class="card-body container" style="justify-content: left; ">
+        <div class="row align-items-center p-1">
+            <div class="input-group">
+                <div class="col-sm-9 d-flex">
+                    <label for="download-button-inputs">Download input data</label>
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn btn-arup" id="download-button-inputs" onclick="downloadInputs('inputs-' + '{{output_page_values.input_data.archive_id.split('-')[0]}}' + '-' + '{{output_page_values.input_data.sim_datetime}}' + '.csv')">
+                        <i class="bi bi-download"></i>
+                    </button>
+                </div>              
+            </div>
+        </div>
+        <div class="row align-items-center p-1">
+            <div class="input-group">
+                <div class="col-sm-9 d-flex">
+                    <label for="download-button">Download output data</label>
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn btn-arup" id="download-button" onclick="click_download_button('outputs-' + '{{output_page_values.input_data.archive_id.split('-')[0]}}' + '-' + '{{output_page_values.input_data.sim_datetime}}' + '.csv')">
+                        <i class="bi bi-download"></i>
+                    </button>
+                </div>              
+            </div>
+        </div>
+    </div>
+</div>

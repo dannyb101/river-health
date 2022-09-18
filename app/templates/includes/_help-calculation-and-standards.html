@@ -1,0 +1,33 @@
+<div class="card m-3">
+    <h3 class="card-header">Calculation and Standards</h3>
+    <div class="card-body px-5 py-5" id="justify-text">
+        <p>When you press the <i>Run Simulation</i> on the application it will take the (log-normal) mean and s.d. of river flow that you have input and convert them to the mean and s.d. of the underlying normal distribution, using the algebra outlined <a href="https://brilliant.org/wiki/log-normal-distribution/#:~:text=The%20mean%20of%20the%20log,m%20%E2%88%92%201%202%20%CF%83%202%20." target="_blank">here</a>.</p>
+        <p>The application then uses that normal mean and s.d. to generate a log-normal distribution, and picks a river flow from that distribution.</p>
+        <p>The application also picks a random value of BOD and NH<sub>3</sub> concentration, except from a normal distribution generated from their mean and s.d. concentrations.</p>
+        <p>These picks are performed for every row of CSO spill data. Each row of spill data therefore gets three values; a river flow, a BOD concentration and an NH<sub>3</sub> concentration.  </p>
+        <p>Once the river data has been added to the spill data the calculator performs a mass balance calculation on each row, using the formulas shown below. </p>
+        <img src="\static\images\mass_balance_formulas.jpg" class="img-fluid img-thumbnail rounded mx-auto d-block" alt="Responsive image" width="400" height="500">
+        <br>
+        <p>The mass-balance calculations result in values for the downstream concentration of BOD and NH3 for each row. This produces a table of results which you can access by clicking <i>Download Output Data</i> on the outputs page. See below for an example of one of these tables. Note that rows where the CSO flow was zero, have been omitted. Also note that the calculator has summed each 5 minute interval of data into hourly intervals of data, where each hourly interval begins on the hour.</p>        
+        
+        
+        <img src="\static\images\mass_balance_output_table.jpg" class="img-fluid img-thumbnail rounded mx-auto d-block" alt="Responsive image" width="800" height="600">
+        <br>
+        <p>The calculator then uses this to calculate 99th percentile concentrations of each of the pollutants. This is the concentration of pollutant at which the river is either equal to or below, for 99 percent of the measurements made.</p>
+        <p>The 99th percentile is calculated for both the upstream and downstream river i.e. pre-spill and post-spill. This is shown in a box on the outputs page, pictured below.</p>
+        <img src="\static\images\pollutant_results_table_example.jpg" class="img-fluid img-thumbnail rounded mx-auto d-block" alt="Responsive image" width="400" height="200">
+        <br>
+        <p>As you can see, the river has been given a Water Framework Directive score both before and after the spill. This is based on tables 5.4(c) and 5.4(d) of the WFD framework found <a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/307788/river-basin-planning-standards.pdf" target="_blank">here</a> and pictured below.</p>
+        <img src="\static\images\wfd_standards_tables.jpg" class="img-fluid img-thumbnail rounded mx-auto d-block" alt="Responsive image" width="700" height="800">
+        <br>
+        <p>If any of the values change in the framework, you can navigate to the <a href="/standards">standards page</a> and update them in the application.</p>
+        <p>Just below the WFD standards, the in-class deterioration is shown. This is used to calculate the Storm Overflow Assessment Framework (SOAF) impact score, based on table 7 of the SOAF <a href="https://www.water.org.uk/wp-content/uploads/2018/12/SOAF.pdf">guide</a>, which is pictured below. </p>
+        <img src="\static\images\soaf_impact_score_table.jpg" class="img-fluid img-thumbnail rounded mx-auto d-block" alt="Responsive image" width="600" height="400">
+        <br>
+        <p>Finally, the impact classification is shown, which is based on table 11 of the SOAF guide, pictured below.</p>
+        <img src="\static\images\soaf_impact_classification.jpg" class="img-fluid img-thumbnail rounded mx-auto d-block" alt="Responsive image" width="600" height="400">
+        <br>
+        <p>If you would like to improve the accuracy of the modelling of the river, you can increase the <i>number of simulations</i>. This means that the above process of finding the 99th percentile is repeated the number of times you specify in the number of simulations field and the results are averaged, as is commonly done in <a href="https://en.wikipedia.org/wiki/Monte_Carlo_method" target="_blank">Monte Carlo</a> simulations.</p>
+        <p>Note that while increasing the number of simulations does improve the accuracy of the model, results tend to converge at about 10 simulations.</p>
+        </div>
+</div>

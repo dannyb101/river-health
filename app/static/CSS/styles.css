@@ -1,0 +1,107 @@
+/* Create Variables for all colours in app */
+
+:root {
+  --table-headers: #b4e1f4;
+  --stripe-one: #bdf5f699;
+  --stripe-two: #ffffff;
+
+  --text-primary: #181B1B;
+  --text-secondary: #5C7070;
+  --text-highlight: #0c4c92;
+
+  --background-primary: #d8f9f980;
+  --background-secondary: #d8d9f940;
+
+  --shadow: #7d949580;
+  --shadow-hover: #2abfca80;
+
+  --button-background: #54d3d6;
+  --button-border: #7d9495;
+
+  --button-warn: #dc3545;
+
+  --black: #181B1B; 
+  --black10: #181B1B1A;
+
+}
+
+/* HEADER STYLING */
+.river-header {
+  background: rgb(2,0,36);
+  background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(183,236,240,1) 0%, rgba(70,190,199,0.9318102240896359) 100%);
+}
+
+.river-header h1 {
+  color: var(--black);
+}
+
+/* START NAVBAR STYLING */
+.navbar {
+  background-color: var(--background-primary);
+}
+
+.nav-link {
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link.active {
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--text-highlight);
+  transform: scale(1.05);
+}
+
+.navbar-nav .nav-link.active:hover {
+  color: var(--text-highlight);
+  transform: scale(1.05);
+}
+/* END NAVBAR STYLING */
+
+/* START BUTTON STYLING */
+.btn-arup {
+  color: var(--text-primary);
+  background-color: var(--button-background);
+  padding: 0.6rem 1.25rem;
+  border: 2px solid var(--black50);
+  border-radius: 7px;
+  transition: all 0.3s ease;
+  box-shadow: 4px 4px 4px var(--shadow);
+}
+
+.btn-arup:hover {
+  border: 2px solid var(--button-background);;
+  transform: scale(1.05);
+  box-shadow: 7px 7px 7px var(--shadow-hover);
+}
+
+.btn-floating {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.btn-arup-warn {
+  color: var(--stripe-two);
+  background-color: var(--button-warn);
+  border: 2px solid var(--black50);
+}
+
+.btn-arup-warn:hover {
+  border: 2px solid var(--button-warn);
+}
+/* END BUTTON STYLING */
+
+/* START FOOTER STYLING */
+main {
+  min-height: 80vh;
+}
+
+.footer-arup {
+  height: 10vh;
+  padding-top: 15px;
+  background-color: var(--background-primary);
+}
+/* END FOOTER STYLING */

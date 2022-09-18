@@ -1,0 +1,57 @@
+
+
+<div class="d-flex flex-row"  style="text-align: left;">
+	<div class="form-group m-auto p-2 col-sm-1">
+		<label class="d-none" for="cso_1">CSO 1</label>
+		<div>
+			1.
+		</div>
+	</div>
+	<div class="form-group p-2 col-sm-4">
+		<label for="cso_id">CSO ID</label>
+		<input
+			type="text"
+			id="cso_id"
+			name="cso_id"
+			class="form-control"
+			required
+			placeholder="e.g. usk001"
+		/>
+	</div>
+
+
+
+	<!-- START CSO BOD INPUT -->
+		<div class="form-group p-2 col-sm-4">
+			<label for="cso_bod_conc_mgl_1">BOD conc.</label>
+			<div class="input-group">
+				<input
+					type="text"
+					id="cso_bod_conc_mgl_1"
+					name="cso_bod_conc_mgl_1"
+					value="{{ defaults.cso_bod_conc_mgl }}"
+					class="no_negs_no_commas_regex form-control"
+					required
+				/>
+				<span class="input-group-text units"> mg/l </span>
+			</div>
+		</div>
+	<!-- END CSO BOD INPUT -->
+
+	<!-- START CSO NH3 INPUT -->
+		<div class="form-group p-2 col-sm-3">
+			<label for="cso_nh3_conc_mgl_1">NH<sub>3</sub> conc.</label>
+			<div class="input-group">
+				<input
+					type="text"
+					id="cso_nh3_conc_mgl_1"
+					name="cso_nh3_conc_mgl_1"
+					value="{{ defaults.cso_nh3_conc_mgl }}"
+					class="no_negs_no_commas_regex form-control"
+					required
+				/>
+				<span class="input-group-text units"> mg/l </span>
+			</div>
+		</div>
+	 <!-- END CSO NH3 INPUT -->
+</div>

@@ -1,0 +1,62 @@
+<div class="card m-3">
+  <h3 class="card-header">Simulation</h3>
+  <div class="card-body">
+
+    <div class="row g-2">
+    <!-- START NO. SIMS INPUT -->
+      <div class="col-sm-6 input-double">
+        <label for="num_sims">No. Simulations</label>
+        <div class="input-group">
+          <input
+            type="text"
+            id="num_sims"
+            name="num_sims"
+            value="{{ defaults.num_sims }}"
+            class="only_pos_ints_regex form-control"
+            required
+          />
+          <span class="input-group-text units"> - </span> 
+        </div>
+      </div>
+    <!-- END NO. SIMS INPUT -->
+
+    <!-- START NO. YEARS INPUT -->
+      <div class="col-sm-6 input-double">
+        <label for="num_years">No. Years</label>
+        <div class="input-group">
+        <input
+            type="number"
+            id="num_years"
+            name="num_years"
+            value="{{ defaults.num_years }}"
+            class="only_pos_ints_regex form-control"
+            min="1"
+            step="1"
+            required
+          />
+          <span class="input-group-text units"> - </span>
+        </div>
+      </div>
+    <!-- END NO. YEARS INPUT -->
+      </div>
+
+    <!-- START RIVER TYPE SELECTOR -->
+    <!-- HIDDEN ON DEFAULTS PAGE -->
+    {% if active_page != 'defaults'%}
+    <div class="row p-3">
+      <div class="col-sm-3 d-flex justify-content-center align-items-center">
+        <label for="river_type">River type</label>
+      </div>
+      <div class="col-sm-9">
+        <select class="form-select" id="river_type" name="river_type" required>
+          <option value="1_2_4_6">
+            WFD water body types 1, 2, 4, 6 and salmonid
+          </option>
+          <option value="3_5_7">WFD water body types 3, 5 and 7</option>
+        </select>
+      </div>
+    </div>
+    {% endif %}
+    <!-- END RIVER TYPE SELECTOR -->
+  </div>
+</div>

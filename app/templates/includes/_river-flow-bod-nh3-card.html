@@ -1,0 +1,56 @@
+<div class="card m-3">
+    <h3 class="card-header">Basic River Parameters</h3>
+    <div class="card-body container text-center" style="position:relative">
+    
+    <!-- START FLOW RATE INPUTS -->
+    <!-- HIDDEN ON DEFAULTS PAGE -->
+    {% if active_page != 'defaults'%}
+        <div class="input-mean-sd mb-0">
+            <label>Flow Rate</label>
+            <div class="input-group">
+                <label for="river_flow_ls" class="input-group-text" id="basic-addon3">Mean</label>
+                <input type="text" id="river_flow_ls" name="river_flow_ls" class="no_negs_no_commas_regex form-control"
+                    required />
+                <label for="river_flow_ls_sd" class="input-group-text">SD</label>
+                <input type="text" id="river_flow_ls_sd" name="river_flow_ls_sd"
+                    class="no_negs_no_commas_regex form-control" required aria-describedby="autopopulated_from_flow"/></label>
+                <span class="input-group-text units">l/s</span>
+            </div>
+        </div>
+        <small id="autopopulated_from_flow" class="form-text text-muted invisible">Flow rate autopopulated from a previous simulation</small>
+    {% endif %}
+    <!-- END FLOW RATE INPUTS -->
+    
+    <!-- START BOD INPUTS -->
+        <div class="input-mean-sd mb-0">
+            <label>BOD conc. </label>
+            <div class="input-group">
+                <label for="river_bod_mgl" class="input-group-text">Mean</label>
+                <input type="text" id="river_bod_mgl" name="river_bod_mgl" value="{{ defaults.river_bod_mgl }}"
+                    class="no_negs_no_commas_regex form-control" required />
+                <label for="river_bod_mgl_sd" class="input-group-text">SD</label>
+                <input type="text" id="river_bod_mgl_sd" name="river_bod_mgl_sd"
+                    value="{{ defaults.river_bod_mgl_sd }}" class="no_negs_no_commas_regex form-control" required />
+                <span class="input-group-text units">mg/l</span>
+            </div>
+        </div>
+        <small id="autopopulated_from_bod" class="form-text text-muted invisible">BOD values autopopulated from a previous simulation</small>
+    <!-- END BOD INPUTS -->
+
+    <!-- START NH3 INPUTS -->
+        <div class="input-mean-sd mb-0">
+            <label>NH<sub>3</sub> conc. </label>
+            <div class="input-group">
+                <label for="river_nh3_mgl" class="input-group-text">Mean</label>
+                <input type="text" id="river_nh3_mgl" name="river_nh3_mgl" value="{{ defaults.river_nh3_mgl }}"
+                    class="no_negs_no_commas_regex form-control" required />
+                <label for="river_nh3_mgl_sd" class="input-group-text">SD</label>
+                <input type="text" id="river_nh3_mgl_sd" name="river_nh3_mgl_sd"
+                    value="{{ defaults.river_nh3_mgl_sd }}" class="no_negs_no_commas_regex form-control" required />
+                <span class="input-group-text units">mg/l</span>
+            </div>
+        </div>
+        <small id="autopopulated_from_nh3" class="form-text text-muted invisible"">Ammonia values autopopulated from a previous simulation</small>
+    <!-- END NH3 INPUTS -->
+    </div>
+</div>

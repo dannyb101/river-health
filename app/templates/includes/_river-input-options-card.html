@@ -1,0 +1,110 @@
+<div class="card m-3" style="z-index: 1000;">
+    <h3 class="card-header">Autopopulate River Parameters</h3>
+    <div class="card-body container" style="position:relative;">
+    <!-- START NRFA STATION INPUT -->
+    <h6>Autopopulate Flow Mean and SD:</h6>
+    <p class="mb-0">From the NRFA using station number <small class="form-text text-muted pb-3">(Click <a target="_blank" href="https://nrfa.ceh.ac.uk/data/search">here</a> to go to the NRFA website)</small></p>
+    <div class="input-group pb-3">
+        <label for="nrfa_station" class="input-group-text">NRFA Station</label>
+        <input class="form-control" id="nrfa_station" name="nrfa_station" type="text" 
+        placeholder="Search.." onclick="showNRFAStations()" onfocus="showNRFAStations()" 
+        onblur="delayedHideNRFAStations()" autocomplete="off">
+    </div>
+    <div class="filter-list-block" id="nrfa_station_stretch_list_container">
+        <ul class="list-group" id="nrfa_stations">
+            {% for nrfa_station in nrfa_stations %}
+            <li class="list-group-item" onclick="populateNRFAStation(this)" id="{{ nrfa_station['station_id'] }}">{{ nrfa_station['station_id'] }} - {{ nrfa_station['station_name'] }}</li> 
+            {% endfor %}
+          </ul>
+    </div>
+    <input type="hidden" id="nrfa_station_id" name="nrfa_station_id">
+    
+    
+    <!-- END NRFA STATION INPUT -->
+
+    <!-- START QUBE INPUT -->
+    <p class="mb-0">From a QUBE csv</p>
+        <div class="input-group pb-4">
+            <div class="col-lg-12" style="text-align: left;">
+                <input type="file" id="qube_csv" name="qube_csv" class="form-control" style="text-align: center"
+                    accept=".csv" aria-describedby="qubeHelp" />
+            </div>
+        </div>
+    <!-- END QUBE INPUT -->
+
+    <!-- START PREVIOUS CALCULATION DROPDOWN -->
+        <h6 id="serialisedHelp">
+        Autopopulate Flow, BOD and Ammonia Mean and SD with previous simulation data:</h6>
+        <div class="input-group">
+            <label for="description_of_simulation" class="input-group-text">Previous simulations</label>
+            <input class="form-control" id="description_of_simulation" name="description_of_simulation" type="text"
+                placeholder="Choose from previous simulations" onclick="showPreviousSimulations()" onfocus="showPreviousSimulations()"
+                onblur="delayedHidePreviousSimulations()" autocomplete="off" >
+        </div>
+        <div class="filter-list-block" id="prev_calcs_container" aria-describedby="serialisedHelp">
+            <ul class="list-group" id="river_stretches">
+                {% for previous_simulation in previous_simulations %}
+                <li class="list-group-item" onclick="populatePreviousSimulations(this)" data-flow-mean="{{ previous_simulation['mean_mixed_flow'] }}" data-flow-sd="{{ previous_simulation['sd_mixed_flow'] }}" data-bod-mean="{{ previous_simulation['mean_mixed_bod'] }}" data-bod-sd="{{ previous_simulation['sd_mixed_bod'] }}" data-nh3-mean="{{ previous_simulation['mean_mixed_nh3'] }}" data-nh3-sd="{{ previous_simulation['sd_mixed_nh3'] }}">
+                    Simulation: {{previous_simulation['name_of_simulation']}} - {{ previous_simulation['id'] | truncate(8, end='') }} - run at: {{previous_simulation['created'].strftime('%H:%M on %d/%m/%Y')}}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    <!-- END PREVIOUS CALCULATION DROPDOWN -->
+    </div>
+</div>
+
+<script>
+    function validateForm() {
+
+        // Make sure that user input a river stretch that is found in the dropdown
+        let river_stretches_object = {{ river_stretches|safe }};
+        let river_stretch_input = document.forms["calc_form"]["river_stretch_name"].value;
+
+        let river_stretch_valid = false;
+        
+        for (let i = 0; i < river_stretches_object.length; i++) {
+            if (river_stretch_input == river_stretches_object[i]){
+                river_stretch_valid = true;
+            }
+        }
+
+        if (!river_stretch_valid){
+            console.log("invalid river stretch")
+            alert("Please choose a river stretch from the dropdown");
+            document.getElementById("river_stretch_name").focus();
+            return false;
+        }
+
+
+
+    // Make sure that the user input a nrfa station that is found in the dropdown
+
+
+        let nrfa_station_input = document.forms["calc_form"]["nrfa_station"].value;
+
+        if (nrfa_station_input.length > 0){
+
+            let nrfa_stations_object = {{ nrfa_stations | safe }};
+            
+            let nrfa_station_valid = false;
+            
+            for (let i = 0; i < nrfa_stations_object.length; i++) {
+                nrfa_station_display_string = nrfa_stations_object[i]['station_id'] + " - " + nrfa_stations_object[i]['station_name'];
+                if (nrfa_station_input == nrfa_station_display_string){
+                    nrfa_station_valid = true;
+                }
+            }
+
+            if (!nrfa_station_valid){
+                alert("Please choose an NRFA Station from the dropdown, or delete the input you have given in the NRFA field.");
+                document.getElementById("nrfa_station").focus();
+                return false;
+            }
+        }
+
+        return true;
+
+    }
+
+</script>

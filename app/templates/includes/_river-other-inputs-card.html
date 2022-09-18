@@ -1,0 +1,55 @@
+<div class="card m-3">
+    <h3 class="card-header">Other River Parameters</h3>
+    <div class="card-body container text-center" style="position:relative">
+
+    <!-- START DO INPUTS -->
+        <div class="input-mean-sd">
+            <label>DO conc. </label>
+            <div class="input-group">
+                <label for="river_do_conc_mgl" class="input-group-text">Mean</label>
+                <input type="text" id="river_do_conc_mgl" name="river_do_conc_mgl"
+                    value="{{ defaults.river_do_conc_mgl }}" class="no_negs_no_commas_regex form-control"
+                    required />
+                <label for="river_do_conc_mgl_sd" class="input-group-text">SD</label>
+                <input type="text" id="river_do_conc_mgl_sd" name="river_do_conc_mgl_sd"
+                    value="{{ defaults.river_do_conc_mgl_sd }}" class="no_negs_no_commas_regex form-control"
+                    required />
+                <span class="input-group-text units">mg/l</span>
+            </div>
+        </div>
+    <!-- END DO INPUTS -->
+
+    <!-- START TEMP INPUTS -->
+        <div class="input-mean-sd">
+            <label>Temp. </label>
+            <div class="input-group">
+                <label for="river_temp_celcius" class="input-group-text">Mean</label>
+                <input type="text" id="river_temp_celcius" name="river_temp_celcius"
+                    value="{{ defaults.river_temp_celcius }}" class="no_negs_no_commas_regex form-control"
+                    required />
+                <label for="river_temp_celcius_sd" class="input-group-text">SD</label>
+                <input type="text" id="river_temp_celcius_sd" name="river_temp_celcius_sd" value="{{ defaults.river_temp_celcius_sd }}"
+                    class="no_negs_no_commas_regex form-control" required />
+                <span class="input-group-text units">(&#176;C)</span>
+            </div>
+        </div>
+    <!-- END TEMP INPUTS -->
+
+    <!-- START PH INPUTS -->
+        <div class="input-mean-sd">
+            <label>pH </label>
+            <div class="input-group">
+                <label for="river_ph" class="input-group-text">Mean</label>
+                <input type="text" id="river_ph" name="river_ph" value="{{ defaults.river_ph }}"
+                    class="no_negs_no_commas_regex form-control" required />
+                <label for="river_ph_sd" class="input-group-text">SD</label>
+                <input type="text" id="river_ph_sd" name="river_ph_sd" value="{{ defaults.river_ph_sd }}"
+                    class="no_negs_no_commas_regex form-control" required />
+                <span class="input-group-text units"> - </span>
+            </div>
+        </div>
+    <!-- END PH INPUTS -->
+    </div>
+</div>
+
+<!-- Adding script to card so that jinja variable can be accesed in JS -->

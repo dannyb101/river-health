@@ -1,0 +1,229 @@
+<!-- Build page from Base template -->
+{% extends "base.html" %}
+
+<!-- Sets Active page link in Nav Bar -->
+{% set active_page = "outputs" %}
+
+<!-- Add page specific CSS stylesheets -->
+{% block stylesheets %}
+<link rel="stylesheet" href="../static/CSS/cards.css" />
+<link rel="stylesheet" href="../static/CSS/outputs.css" />
+<link rel="stylesheet" href="../static/CSS/soaf+wfd-colours.css" />
+{% endblock %}
+
+<!-- Insert Page title -->
+{% block title%} Outputs {% endblock %}
+
+<!-- Insert Page Content -->
+{% block content %}
+<div class="container text-center">
+
+    <!-- START HIGHLIGHTS ROW -->
+    <div class="row align-items-center">
+        <!-- START RIVER DETAILS -->
+        <div class="col-md-6 col-sm-12">
+            <div class="card m-3">
+                <h3 class="card-header">Calculation Details</h3>
+                <div class="card-body text-center table-responsive">
+                    <table class="table">
+                        <tr>
+                            <td>Name Of Simulation</td>
+                            <td>{{ output_page_values.name_of_sim}}</td>
+                        </tr>
+                        <tr>
+                            <td>Simulation ID</td>
+                            <td>{{output_page_values.input_data.archive_id.split('-')[0]}}</td>
+                        </tr>
+                        <tr>
+                            <td>River Stretch Name</td>
+                            <td>{{ output_page_values.river_stretch_name }}</td>
+                        </tr>
+                        {% for key, value in output_page_values.cso_input_data.items() %}
+                        {% if key.split('_')[1] == 'id' %}
+                        <tr>
+                            <td>CSO ID {{ key.split('_')[2] }}</td>
+                            <td>{{ value }}</td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                        <tr>
+                            <td>River Type</td>
+                            <td>{{ output_page_values.river_class | replace("_", ",") }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- END RIVER DETAILS -->
+        <!-- START DOWNLOADS CARD -->
+        <div class="col-md-6 col-sm-12">
+            {% include 'includes/_downloads-card.html' %}
+        </div>
+        <!-- END DOWNLOADS CARD -->
+    </div>
+    <div class="row align-items-center">
+        <!-- START BOD INFO -->
+        <div class="col-md-6 col-sm-12">
+            <div class="card m-3">
+                <h3 class="card-header">BOD Results</h3>
+                <div class="card-body text-center">
+                    <div class="table-responsive">
+                        <table class="table" id="bod_results">
+                            <tr style="display: none;">
+                                <th>BOD results</th>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <th>Pre-Spill </th>
+                                <th>Post-Spill</th>
+                            </tr>
+                            <tr>
+                                <td>99<sup>th</sup> Percentile</td>
+                                <td>{{output_page_values.pre_spill_bod_ninetynine_percentile}} mg/l</td>
+                                <td>{{output_page_values.post_spill_bod_ninetynine_percentile}} mg/l</td>
+                            </tr>
+                            <tr>
+                                <td>WFD Standard</td>
+                                <td class="{{output_page_values.pre_spill_bod_wfd_std_attained}}">
+                                    {{output_page_values.pre_spill_bod_wfd_std_attained}}</td>
+                                <td class="{{output_page_values.post_spill_bod_wfd_std_attained}}">
+                                    {{output_page_values.post_spill_bod_wfd_std_attained}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <br>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tr>
+                                <td colspan="2">In Class Deterioration</td>
+                                {% if output_page_values.in_class_bod_percentage_deteriotation >= 100 %}
+                                <td>N/A</td>
+                                {% else %}
+                                <td>{{output_page_values.in_class_bod_percentage_deteriotation}}%</td>
+                                {% endif %}
+                            </tr>
+                            <tr>
+                                <td colspan="2">SOAF Impact Score</td>
+                                <td class="SOAF{{output_page_values.bod_score}}">{{output_page_values.bod_score}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">SOAF Impact Classification</td>
+                                <td class="SOAF{{output_page_values.bod_score}}">{{output_page_values.bod_soaf_class}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END BOD INFO -->
+
+        <!-- START NH3 INFO -->
+        <div class="col-md-6 col-sm-12">
+            <div class="card m-3">
+                <h3 class="card-header">NH<sub>3</sub> Results</h3>
+                <div class="card-body text-center table-responsive">
+                    <div class="table-responsive">
+                        <table class="table" id="ammonia_results">
+                            <tr style="display: none;">
+                                <th>Ammonia results</th>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <th>Pre-Spill</th>
+                                <th>Post-Spill</th>
+                            </tr>
+                            <tr>
+                                <td>99<sup>th</sup> Percentile</td>
+                                <td>{{output_page_values.pre_spill_nh3_ninetynine_percentile}} mg/l</td>
+                                <td>{{output_page_values.post_spill_nh3_ninetynine_percentile}} mg/l</td>
+                            </tr>
+                            <tr>
+                                <td>WFD Standard</td>
+                                <td class="{{output_page_values.pre_spill_nh3_wfd_std_attained}}">
+                                    {{output_page_values.pre_spill_nh3_wfd_std_attained}}</td>
+                                <td class="{{output_page_values.post_spill_nh3_wfd_std_attained}}">
+                                    {{output_page_values.post_spill_nh3_wfd_std_attained}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <br>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tr>
+                                <td colspan="2">In Class Deterioration</td>
+                                {% if output_page_values.in_class_nh3_percentage_deteriotation >= 100 %}
+                                <td>N/A</td>
+                                {% else %}
+                                <td>{{output_page_values.in_class_nh3_percentage_deteriotation}}%</td>
+                                {% endif %}
+                            </tr>
+                            <tr>
+                                <td colspan="2">SOAF Impact Score</td>
+                                <td class="SOAF{{output_page_values.nh3_score}}">{{output_page_values.nh3_score}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">SOAF Impact Classification</td>
+                                <td class="SOAF{{output_page_values.nh3_score}}">{{output_page_values.nh3_soaf_class}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END NH3 INFO -->
+
+    </div>
+    <!-- END HIGHLIGHTS ROW -->
+</div>
+
+
+<div class="container text-center">
+    <!-- START GRAPHS -->
+    <div class="row">
+        <div class="col-md-12 col-lg-6">
+            <div class="card m-4">
+                <h3 class="card-header">BOD 99<sup>th</sup> percentile graph</h3>
+                <div class="card-body">
+                    {% include bod_graph | safe %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 col-lg-6">
+            <div class="card m-4">
+                <h3 class="card-header">NH<sub>3</sub> 99<sup>th</sup> percentile graph</h3>
+                <div class="card-body">
+                    {% include nh3_graph | safe %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END GRAPHS-->
+</div>
+<!-- START CALCULATIONS DATAFRAME -->
+<!-- The dataframe is set to not display (d-none) as rendering causes application to crash on larger simulations -->
+<!-- The HTML code must NOT be removed as it is used to create the outputs download file -->
+<div class="row d-none">
+    <div class="col-md-1"></div>
+    <div class="col">
+        <div class="card m-3">
+            <div class="card-body p-0 table-wrapper">
+                {% for table in tables %}
+                {{ table|safe }}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+<!-- END CALCULATIONS DATAFRAME -->
+
+{% endblock %}
+
+<!-- Insert Javascript Scripts -->
+{% block scripts %}
+<script>
+    const inputData = JSON.parse('{{ output_page_values.input_data | tojson }}');
+    const csoInputData = JSON.parse('{{ output_page_values.cso_input_data | tojson }}')
+</script>
+<script src="{{'../static/JS/download.js'}}"></script>
+{% endblock %}

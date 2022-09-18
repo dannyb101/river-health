@@ -1,0 +1,33 @@
+/* START CUSTOM STYLING OF BOOTSTRAP CLASSES */
+.card-body {
+    padding: 0;
+}
+
+.form-control {
+    padding-right: 15px;
+}
+
+.accordion-item {
+    border: 1px solid var(--black);
+    border-radius: 0;
+}
+
+/* REMOVE BOOTSTRAP ROUNDED CORNERS */
+.accordion-item:first-of-type, .accordion-item:last-of-type {
+    border-radius: 0;
+}
+
+/* END CUSTOM STYLING OF BOOTSTRAP CLASSES */
+
+.nowrap {
+    white-space: nowrap ;
+  }
+
+  .archive-empty-card {
+    min-width: 400px;
+    min-height: 250px;
+}
+
+.archive-empty-secondary-text {
+    color: var(--text-secondary);
+}

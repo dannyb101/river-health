@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg shadow mb-3">
+    <div class="container">
+      <!-- This line is needed by Bootstrap to push the toggler to the right -->
+      <a class="navbar-brand" href="#"></a>
+      <!-- Toggle button displayed on smaller screen sizes -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <!-- LEFT ALIGNED ITEMS -->
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link {{'active' if active_page == 'inputs'}}" href="/">Inputs</a></li>
+          <li class="nav-item"><a class="nav-link {{'active' if active_page == 'outputs'}}" href="/outputs">Outputs</a></li>
+          <li class="nav-item"><a class="nav-link {{'active' if active_page == 'archive'}}" href="/archive">Archive</a></li>
+        </ul>
+
+        <!-- RIGHT ALIGNED ITEMS -->
+          <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link {{'active' if active_page == 'help'}}" href="/help">Help</a></li>
+          <li class="nav-item"><a class="nav-link {{'active' if active_page == 'standards'}}" href="/standards">Standards</a></li>
+          <li class="nav-item"><a class="nav-link {{'active' if active_page == 'defaults'}}" href="/defaults">Defaults</a></li>
+        </ul>
+    </div>
+</div>
+</nav>

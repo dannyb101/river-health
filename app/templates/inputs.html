@@ -1,0 +1,151 @@
+<!-- Build page from Base template -->
+{% extends "base.html" %}
+
+<!-- Sets Active page link in Nav Bar -->
+{% set active_page = "inputs" %}
+
+<!-- Add page specific CSS stylesheets -->
+{% block stylesheets %}
+<link rel="stylesheet" href="../static/CSS/inputs.css">
+<link rel="stylesheet" href="../static/CSS/cards.css">
+<link rel="stylesheet" href="../static/CSS/loading.css">
+{% endblock %}
+
+<!-- Insert Page title -->
+{% block title%} Inputs {% endblock %}
+
+<!-- Insert Page Content -->
+{% block content %}
+
+<!-- START CONTAINER -->
+<div class="container text-center">
+
+  <!-- START FORM CONTAINING ALL VALUES -->
+  <form name="calc_form" action="/" onsubmit="runSimulation()" method="post" enctype='multipart/form-data' onsubmit="return validateForm()">
+    <!-- START TOP ROW -->
+    <div class="row align-items-center justify-content-center">
+      <!-- START TOP ROW -->
+      <div class="col">
+        {% include 'includes/_basic-naming-card.html' %}
+      </div>
+    </div>
+    <!-- END TOP ROW-->
+    <!-- START SECOND ROW -->
+    
+    <div class="row align-items-center justify-content-center">
+      
+      <div class=" col-lg-6 col-md-12">
+        {% include 'includes/_simulations-card.html' %}
+      </div>
+      
+      <div class=" col-lg-6 col-md-12">
+        {% include 'includes/_cso-card.html' %}
+      </div>
+      
+    </div>
+    <!-- END SECOND ROW -->
+    
+    
+    <!-- START THIRD ROW -->
+    <div class="row align-items-center">
+      
+      <!-- START LEFT FORM THIRD ROW -->
+      <div class=" col-lg-6 col-md-12">
+        {% include 'includes/_river-input-options-card.html' %}
+      </div>
+      <!-- END LEFT FORM THIRD ROW-->
+      
+      <!-- START RIGHT FORM THIRD ROW-->
+      <div class="col-lg-6 col-md-12">
+        {% include 'includes/_river-flow-bod-nh3-card.html' %}
+      </div>
+      <!-- END RIGHT FORM THIRD ROW-->
+      
+    </div>
+    <!-- END THIRD ROW -->
+    
+    
+    <!-- START MIDDLE ROW -->
+    <div class="row align-items-center">
+      
+      <!-- START MIDDLE LEFT FORM -->
+      <div class=" col-lg-6 col-md-12">
+        {% include 'includes/_river-other-inputs-card.html' %}
+      </div>
+      
+      <!-- END MIDDLE LEFT FORM -->
+      
+      <!-- START MIDDLE RIGHT FORM -->
+      <div class="col-lg-6 col-md-12">
+        {% include 'includes/_river-dims-card.html' %}
+      </div>
+      <!-- END MIDDLE RIGHT FORM -->
+      
+    </div>
+    <!-- END MIDDLE ROW -->
+    
+    
+    <!-- START BOTTOM ROW -->
+    <div class="row align-items-center">
+      
+      <!-- START BOTTOM LEFT FORM -->
+      <div class=" col-lg-6 col-md-12">
+        {% include 'includes/_aeration-card.html' %}
+      </div>
+      <!-- END BOTTOM LEFT FORM -->
+      
+      
+      <!-- START BOTTOM RIGHT FORM -->
+      <div class="col-lg-6 col-md-12">
+        {% include 'includes/_river-params-card.html' %}
+      </div>
+      <!-- END BOTTOM RIGHT FORM -->
+      
+      
+    </div>
+    <!-- END BOTTOM ROW -->
+    
+    <!-- SIMULATION RUN BUTTON -->
+    <div id="simulation-btn">
+      <button type="submit" class="btn btn-arup btn-floating" >Run Simulation</button>
+    </div>
+    
+  </form>
+  <!-- END FORM CONTAINING ALL VALUES -->
+  
+</div>
+<!-- END CONTAINER -->
+
+
+
+<!-- Modal -->
+<div class="modal" id="loadingModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+  
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center">
+      
+        <h3 class="modal-title p-2" id="exampleModalLabel">Calculation In Progress...</h3>
+        <div class="d-flex justify-content-center p-4">
+          <div class="dots-bars-6"></div>
+        </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+<!-- Insert Javascript Scripts -->
+{% block scripts %}
+<!-- JS -->
+<script>
+  const defaults = JSON.parse('{{ defaults | tojson }}');
+  const loadingModal = new bootstrap.Modal(document.getElementById("loadingModal"), {});
+  const runSimulation = () => {
+    loadingModal.show()
+  }
+</script>
+<script src="{{'../static/JS/validation.js'}}"></script>
+<script src="{{'../static/JS/qube.js'}}"></script>
+<script src="{{'../static/JS/dropdowns.js'}}"></script>
+{% endblock %}

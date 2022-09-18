@@ -1,0 +1,36 @@
+<!-- Build page from Base template -->
+{% extends "base.html" %} 
+
+<!-- Sets Active page link in Nav Bar -->
+{% set active_page = "help" %}
+
+<!-- Add page specific CSS stylesheets -->
+{% block stylesheets %} 
+<link rel="stylesheet" href="../static/CSS/help.css"> 
+<link rel="stylesheet" href="../static/CSS/cards.css">
+{% endblock %}
+
+<!-- Insert Page title -->
+{% block title%} Help {% endblock %}
+
+<!-- Insert Page Content -->
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-10">
+            {% include 'includes/_help-upstream-data.html' %}
+            {% include 'includes/_help-spill-data.html' %}
+            {% include 'includes/_help-calculation-and-standards.html' %}
+            {% include 'includes/_help-notes-and-third-parties.html' %}
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+<!-- Insert Javascript Scripts -->
+{% block scripts %}
+
+{% endblock %}

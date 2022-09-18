@@ -1,0 +1,128 @@
+<!-- Build page from Base template -->
+{% extends "base.html" %}
+
+<!-- Sets Active page link in Nav Bar -->
+{% set active_page = "defaults" %}
+
+<!-- Add page specific CSS stylesheets -->
+{% block stylesheets %}
+<link rel="stylesheet" href="../static/CSS/cards.css">
+{% endblock %}
+
+<!-- Insert Page title -->
+{% block title%} Defaults {% endblock %}
+
+<!-- Insert Page Content -->
+{% block content %}
+
+<h1 class="text-center">Change Default Values Used In Inputs Form</h1>
+
+
+<!-- START CONTAINER -->
+<div class="container text-center">
+
+  <!-- START FORM CONTAINING ALL VALUES -->
+  <form name="defaults_form" action="/defaults/" method="post" enctype='multipart/form-data'>
+    <div class="row align-items-center">
+
+      <div class=" col-lg-3 col-md-12"></div>
+      <!-- START TOP FORM -->
+      <div class=" col-lg-6 col-md-12">
+        {% include 'includes/_river-flow-bod-nh3-card.html' %}
+      </div>
+      <div class=" col-lg-3 col-md-12"></div>
+      <!-- END TOP FORM -->
+    </div>
+
+    <!-- START SECOND ROW -->
+    <div class="row align-items-center">
+
+      <!-- START SECOND LEFT FORM -->
+      <div class=" col-lg-6 col-md-12">
+        {% include 'includes/_river-other-inputs-card.html' %}
+      </div>
+      <!-- END SECOND LEFT FORM -->
+
+      <!-- START SECOND RIGHT FORM -->
+      <div class="col-lg-6 col-md-12">
+        {% include 'includes/_cso-card.html' %}
+
+      </div>
+    </div>
+    <!-- END SECOND RIGHT FORM -->
+    <!-- END SECOND ROW -->
+
+
+    <!-- START MIDDLE ROW -->
+    <div class="row align-items-center">
+
+      <!-- START MIDDLE LEFT FORM -->
+      <div class=" col-lg-6 col-md-12">
+        {% include 'includes/_river-dims-card.html' %}
+      </div>
+
+      <!-- END MIDDLE LEFT FORM -->
+
+      <!-- START MIDDLE RIGHT FORM -->
+      <div class="col-lg-6 col-md-12">
+        {% include 'includes/_aeration-card.html' %}
+      </div>
+      <!-- END MIDDLE RIGHT FORM -->
+
+    </div>
+    <!-- END MIDDLE ROW -->
+
+
+    <!-- START BOTTOM ROW -->
+    <div class="row align-items-center">
+
+      <!-- START BOTTOM LEFT FORM -->
+      <div class=" col-lg-6 col-md-12">
+        {% include 'includes/_river-params-card.html' %}
+      </div>
+      <!-- END BOTTOM LEFT FORM -->
+
+
+      <!-- START BOTTOM RIGHT FORM -->
+      <div class="col-lg-6 col-md-12">
+        {% include 'includes/_simulations-card.html' %}
+      </div>
+      <!-- END BOTTOM RIGHT FORM -->
+
+    </div>
+    <!-- END BOTTOM ROW -->
+    <div id="defaults-btn">
+      <button type="submit" class="btn btn-arup btn-floating">Update Defaults</button>
+    </div>
+  </form>
+  
+  <div class="row justify-content-center">
+    <div class="col-sm-6">
+    <div class="card m-3">
+      <h3 class="card-header">Reset To Original Values</h3>
+      <div class=" card-body">
+        <p>Warning!</p>
+        <p>Pressing this button will return defaults back to the original default values. These values can be found on the <a href="/help">help</a> page.</p>
+        <form action="/defaults/reset" method="get">
+          <div id="defaults-btn">
+            <button type="submit" class="btn btn-arup btn-arup-warn btn-floating">Reset Defaults</button>
+          </div>
+        </form>
+    </div>
+
+  </div>
+</div>
+</div>
+<!-- END FORM CONTAINING ALL VALUES -->
+
+</div>
+<!-- END CONTAINER -->
+{% endblock %}
+
+<!-- Insert Javascript Scripts -->
+{% block scripts %}
+<script src="{{'../static/JS/validation.js'}}"></script>
+{% endblock %}
+
+
+

@@ -1,0 +1,25 @@
+<!-- To create a new page, please copy and paste this template into new HTML file -->
+<!-- Build page from Base template -->
+{% extends "base.html" %} 
+
+<!-- Sets Active page link in Nav Bar -->
+<!-- THIS VALUE must also be added as a navbar link in _navbar.html as shown in comment below -->
+<!-- <li class="nav-item"><a class="nav-link {{'active' if active_page == 'THIS VALUE'}}" href="/">PAGE NAME HERE</a></li> -->
+<!-- PLEASE REMOVE THIS AND THE ABOVE TWO COMMENTS ONCE COMPLETED ON NEW PAGE -->
+{% set active_page = THIS VALUE  %}
+
+<!-- Add page specific CSS stylesheets -->
+{% block stylesheets %} <link rel="stylesheet" href="INSERT PAGE SPECIFIC CSS HERE"> {% endblock %}
+
+<!-- Insert Page title -->
+{% block title%} PAGE TITLE HERE {% endblock %}
+
+<!-- Insert Page Content -->
+{% block content %}
+
+{% endblock %}
+
+<!-- Insert Javascript Scripts -->
+{% block scripts %}
+
+{% endblock %}

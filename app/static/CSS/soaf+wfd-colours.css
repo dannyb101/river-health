@@ -1,0 +1,35 @@
+/* WFD STANDARD COLOURS (body has been added to increase specificity)*/
+body .High {
+    background-color: #E1F0D9;
+}
+body .Good {
+    background-color: #A8D08D;
+}
+body .Moderate {
+    background-color: #FFD966;
+}
+body .Poor {
+    background-color: #C55911;
+}
+body .Bad {
+    background-color: #000000;
+    color: white;
+}
+
+/* SOAF SCORE COLOURS (body has been added to increase specificity)*/
+body .SOAF5 {
+    background-color: #92D050;
+}
+body .SOAF15 {
+    background-color: #FFE599;
+}
+body .SOAF25 {
+    background-color: #C55911;
+}
+body .SOAF35 {
+    background-color: #FF0100;
+}
+body .SOAF45 {
+    background-color: #000000;
+    color: white;
+}

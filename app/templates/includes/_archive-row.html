@@ -1,0 +1,103 @@
+<div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#Arr{{data['id']}}" aria-expanded="false" aria-controls="flush-collapseOne">
+
+        <!-- Start Accordion Highlight Row -->
+        <div class="container">
+          <!-- Make styling completely dynamic -->
+        <div class="row d-flex justify-content-around">
+          <div class="col-md-auto">
+            <div class="input-group pb-2">
+              <!-- Shorten Unique ID UUID to first 8 digits -->
+              <span class="input-group-text" >Unique ID </span>
+              <span class="form-control">{{data['id'] | truncate(8, end='')}}</span>
+            </div>
+          </div>
+          <div class="col-md-auto">
+            <div class="input-group pb-2">
+              <span class="input-group-text" >Name of Simulation </span>
+              <span class="form-control">{{data['name_of_simulation']}}</span>
+            </div>
+          </div>
+          <div class="col-md-auto">
+            <div class="input-group pb-2">
+              <span class="input-group-text" >Username </span>
+              <span class="form-control">{{data['username']}}</span>
+            </div>
+          </div>
+          <div class="col-md-auto">
+            <div class="input-group pb-2">
+              <!-- Edit datetime to human readable format -->
+              <span class="input-group-text" >Created at </span>
+              <span class="form-control nowrap">{{data['created'].strftime('%H:%M on %d/%m/%Y')}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+       <!-- End Accordion Highlight Row -->
+      </button>
+
+    </h2>
+    <!-- ID must match data-bs-target -->
+    <div id="Arr{{data['id']}}" class="accordion-collapse collapse p-3" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+      <!-- Start Accordion Further Information -->
+      <div class="container">
+        <div class="row d-flex justify-content-around">
+          <div class="col-md-auto d-flex flex-column justify-content-center">
+            <div class="row pl-5 pr-5 pb-3">
+              <div class="input-group">
+                <span class="input-group-text" >River Name </span>
+                <span class="form-control">
+                  <!-- Show only the main part of the the river name, hide part after "-" -->
+                  {% set list1 = data['name'].split(' ') %}
+                  {% for item in list1 %}
+                  {% if item == '-'%}
+                  {% break %}
+                  {% endif %}
+                  {{ item }}
+                  {% endfor %} 
+                </span>
+                </div>
+              </div>
+              <div class="row pl-5 pr-5 ">
+              <div class="input-group">
+                <!-- Convert River type to more human readable format -->
+                <span class="input-group-text" >River Type </span>
+                <span class="form-control">{{data['water_body_type'] | replace("_", ",")}}</span>
+                </div>
+              </div>
+          </div>
+          <div class="col-md-auto">
+            <!-- START KEY INFO TABLE -->
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">SOAF Score</th>
+                  <th scope="col">WFD Post Spill Standard</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">BOD</th>
+                <td class="SOAF{{data['bod_soaf_score']}}">{{data['bod_soaf_score']}}</td>
+                <td class="{{data['bod_wfd_standard_post_spill']}}">{{data['bod_wfd_standard_post_spill']}}</td>
+              </tr>
+              <tr>
+                <th scope="row">NH<sub>3</sub></th>
+              <td class="SOAF{{data['nh3_soaf_score']}}">{{data['nh3_soaf_score']}}</td>
+              <td class="{{data['nh3_wfd_standard_post_spill']}}">{{data['nh3_wfd_standard_post_spill']}}</td>
+            </tr>
+              </tbody>
+            </table>
+            <!-- END KEY INFO TABLE -->
+          </div>
+          <div class="col-md-auto text-center d-flex align-items-center justify-content-center">
+            <!-- Automatically generate link to correct outputs page -->
+            <a class="btn btn-arup" href="{{ url_for('outputs.outputs_route') }}/{{data['id']}}" role="button">See Full Details</a>
+          </div>
+        </div>
+      </div>
+    <!-- End Accordion Further Information -->
+  </div>
+</div>

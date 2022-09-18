@@ -1,0 +1,63 @@
+<div class="card m-3">
+  <h3 class="card-header">CSO Data</h3>
+  <div class="card-body container" id="cso_card" style="justify-content: left">
+
+   
+    <!-- START CSO CSV INPUT -->
+    <!-- HIDDEN ON DEFAULTS PAGE -->
+    {% if active_page != 'defaults'%}
+    <div class="row g-2 p-3">
+      <div class="col-sm-3 d-flex align-items-center justify-content-center">
+        <label for="cso_csv">Upload .csv file</label>
+      </div>
+      <div class="col-sm-9" style="text-align: left">
+
+        <input type="file" id="cso_csv" name="cso_csv" class="form-control" style="text-align: center" accept=".csv"
+          required />
+      </div>
+    </div>
+
+    {% endif %}
+    <!-- END CSO CSV INPUT -->
+    {% if active_page == 'defaults' %}
+    <div class="row g-2">
+      <!-- START CSO BOD INPUT -->
+        <div class="col-sm-6 input-double">
+          <label for="cso_bod_conc_mgl">BOD conc.</label>
+          <div class="input-group">
+            <input
+              type="text"
+              id="cso_bod_conc_mgl"
+              name="cso_bod_conc_mgl"
+              value="{{ defaults.cso_bod_conc_mgl }}"
+              class="no_negs_no_commas_regex form-control"
+              required
+            />
+            <span class="input-group-text units"> mg/l </span>
+          </div>
+        </div>
+      <!-- END CSO BOD INPUT -->
+  
+      <!-- START CSO NH3 INPUT -->
+        <div class="col-sm-6 input-double">
+          <label for="cso_nh3_conc_mgl">NH<sub>3</sub> conc.</label>
+          <div class="input-group">
+            <input
+              type="text"
+              id="cso_nh3_conc_mgl"
+              name="cso_nh3_conc_mgl"
+              value="{{ defaults.cso_nh3_conc_mgl }}"
+              class="no_negs_no_commas_regex form-control"
+              required
+            />
+            <span class="input-group-text units"> mg/l </span>
+          </div>
+        </div>
+       <!-- END CSO NH3 INPUT -->
+      </div>
+      {% endif %}
+
+
+
+  </div>
+</div>

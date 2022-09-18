@@ -1,0 +1,51 @@
+<div class="card aeration m-3">
+  <h3 class="card-header">Aeration Equation</h3>
+  <div class="card-body ">
+    <div class="row g-2">
+      <div class="col-sm-6 input-double">
+        <label for="reaeration_constant">Re-aeration constant</label>
+        <div class="input-group">
+          <input
+            type="text"
+            id="reaeration_constant"
+            name="reaeration_constant"
+            value="{{ defaults.reaeration_constant }}"
+            class="no_negs_no_commas_regex form-control"
+            required
+          />
+          <span class="input-group-text units"> - </span>
+        </div>
+      </div>
+
+      <div class="col-sm-6 input-double">
+        <label for="velocity_exponent">Velocity Exponent</label>
+        <div class="input-group">
+          <input
+            type="text"
+            id="velocity_exponent"
+            name="velocity_exponent"
+            value="{{ defaults.velocity_exponent }}"
+            class="no_negs_no_commas_regex form-control"
+            required
+          />
+          <span class="input-group-text units"> - </span>
+        </div>
+      </div>
+
+      <div class="col-sm-6 input-double">
+        <label for="depth_exponent">Depth Exponent</label>
+        <div class="input-group">
+          <input
+            type="text"
+            id="depth_exponent"
+            name="depth_exponent"
+            class="form-control"
+            value="{{ defaults.depth_exponent }}"
+            required
+          />
+          <span class="input-group-text units"> - </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

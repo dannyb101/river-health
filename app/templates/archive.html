@@ -1,0 +1,51 @@
+<!-- Build page from Base template -->
+{% extends "base.html" %} 
+
+<!-- Sets Active page link in Nav Bar -->
+{% set active_page = "archive" %}
+
+<!-- Add page specific CSS stylesheets -->
+{% block stylesheets %}
+<link rel="stylesheet" href="../static/CSS/cards.css">
+<link rel="stylesheet" href="../static/CSS/archive.css"> 
+<link rel="stylesheet" href="../static/CSS/soaf+wfd-colours.css" /> 
+{% endblock %}
+
+<!-- Insert Page title -->
+{% block title%} Archive {% endblock %}
+
+<!-- Insert Page Content -->
+{% block content %}
+
+<!-- START CONTAINER -->
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+            <!-- START WHOLE PAGE CARD -->
+            <div class="card m-3">
+                <h3 class="card-header">
+                    Review Previous Calculations
+                </h3>
+                <div class="card-body">
+                    <div class="accordion" id="accordionFlushExample">
+                        {% for archive in archives %}
+                        {% with data=archive %}
+                        {% include 'includes/_archive-row.html' %}
+                        {% endwith %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <!-- END WHOLE PAGE CARD -->
+        </div>
+    </div>
+</div>
+<!-- END CONTAINER -->
+
+{% endblock %}
+
+<!-- Insert Javascript Scripts -->
+{% block scripts %}
+
+{% endblock %}

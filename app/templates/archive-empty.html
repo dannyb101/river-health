@@ -1,0 +1,47 @@
+<!-- Build page from Base template -->
+{% extends "base.html" %} 
+
+<!-- Sets Active page link in Nav Bar -->
+{% set active_page = active_page %}
+
+<!-- Add page specific CSS stylesheets -->
+{% block stylesheets %}
+<link rel="stylesheet" href="../static/CSS/archive.css"> 
+<link rel="stylesheet" href="../static/CSS/cards.css">
+{% endblock %}
+
+<!-- Insert Page title -->
+{% block title%} Archive {% endblock %}
+
+<!-- Insert Page Content -->
+{% block content %}
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-auto">
+            <div class="card m-3 archive-empty-card">
+                <h3 class="card-header">Archive Empty</h3>
+                <div class="card-body p-5 text-center">
+                    <h4 class="pb-4">No previous calculations are available</h4>
+                    <p class="archive-empty-secondary-text pb-2">
+                        Please go to the <a href="/">inputs page</a> to start a calculation </p>
+                    {% if active_page == 'outputs' %}
+                    <p class="archive-empty-secondary-text pb-3"> 
+                        Check back here after to see the most recent calculation performed</p>
+                    {% elif active_page == 'archive' %}
+                    <p class="archive-empty-secondary-text pb-3"> 
+                        Check back here after to see a list of all previous calculations </p>
+                    {% endif %}
+
+                    <a class="btn btn-arup" href="/" role="button">Go to Inputs</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+<!-- Insert Javascript Scripts -->
+{% block scripts %}
+
+{% endblock %}

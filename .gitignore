@@ -1,0 +1,14 @@
+env
+__pycache__/
+.pytest_cache/
+*.ipynb
+.vscode
+.history
+.terraform
+_NH3-graph-card.html
+_BOD-graph-card.html
+.DS_Store
+.gitignore.swp
+_BOD-graph-card.html
+_NH3-graph-card.html
+nrfa_api_temp.csv

@@ -1,0 +1,8 @@
+/* Stops Resizing of list items when display set to none */
+.list-group-item{
+    width: 455px;
+}
+
+.qube-input {
+    margin-top: 20px;
+}

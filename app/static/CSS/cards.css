@@ -1,0 +1,98 @@
+/*
+input-mean-sd is the div that makes up a row used to hold
+the mean and sd inputs for river paramaters
+*/
+.input-mean-sd{
+    display: flex;
+    align-items: center;
+    margin: 5px;
+    text-align: right;
+    justify-content: space-between;
+}
+.input-mean-sd > label{
+    padding: 0 20px;
+    width: 30%;
+}
+/*
+input-double is used for two div inputs that appear side by side in a card
+*/
+.input-double{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.input-double label{
+    padding: 0 10px 0 0;
+    width: 80%;
+}
+
+/*
+adding to card boostrap classes
+*/
+
+.card-body{
+    justify-content: center;
+}
+.card-header{
+    text-align: left;
+    background-color: var(--background-primary);
+}         
+/* 
+units is used for styling the unit fields that appear next to the input fields
+*/  
+.units{
+    color: var(--text-primary);
+    background-color: var(--background-secondary);
+    width:55px;
+    justify-content: center;
+}
+.params .units{
+    width: 65px;
+}
+
+/* filter river stretch names */
+.filter-list-block{
+  position:absolute;
+  display:none;
+  z-index:1;
+  right: 20px;
+}
+.filter-list-block > ul {
+    max-height: 300px;
+    overflow: scroll;
+}
+
+#simulation-btn{
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.input-group{
+    justify-content: center;
+}
+
+/* START INPUT STYLING */
+.input-group-text {
+    background-color: var(--background-secondary);
+  }
+  
+  input[type=file]::file-selector-button {
+    background-color: var(--background-secondary);
+  }
+  /* END INPUT STYLING */
+
+  /* HOVER EFFECTS */
+  .card {
+      transition: all 1s ease;
+      box-shadow: 0 .5rem 1rem var(--shadow);
+  }
+  .card:hover {
+      transform: scale(1.01);
+      box-shadow: 0 0.75rem 1.5rem var(--shadow-hover);
+  }
+  /* END HOVER EFFECTS */
+
+  #justify-text{
+    text-align:justify;
+  }

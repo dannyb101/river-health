@@ -1,0 +1,61 @@
+<div class="card m-3" style="z-index: 2000;">
+    <h3 class="card-header">Calculation Identification</h3>
+    <div class="card-body container text-center" style="position:relative">
+    <div class="row align-items-center justify-content-center"> 
+        <!-- START SIMULATION NAME -->
+        <div class=" col-md-auto col-sm-12">
+            <div class="row p-1">
+                <div class="col-sm-12 input-group">
+                <label for="name_of_sim" class="input-group-text">Simulation Name</label>
+                <input
+                    type="text"
+                    id="name_of_sim"
+                    name="name_of_sim"
+                    class="form-control"
+                    required
+                    placeholder="Name Simulation"
+                />
+                </div>
+            </div>
+        </div>
+            <!-- END SIMULATION NAME -->   
+            <!-- START USERNAME -->
+
+        <div class=" col-md-auto col-sm-12">
+            <div class="row p-1">
+                <div class="col-sm-12 input-group">
+                    <label for="username" class="input-group-text">Username</label>
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        class="form-control"
+                        required
+                        placeholder="Enter your username"
+                    />
+                </div>
+            </div>
+        </div>
+            <!-- END USERNAME -->
+            <!-- START RIVER STRETCH NAME -->
+        <div class=" col-md-auto col-sm-12">
+            <div class="input-group p-2">
+                <label for="river_stretch_name" class="input-group-text">Stretch Name</label>
+                <input class="form-control" id="river_stretch_name" name="river_stretch_name" type="text"
+                    placeholder="Search.." onclick="showRiverStretches()" onfocus="showRiverStretches()"
+                    onblur="delayedHideRiverStretches()" autocomplete="off" required >
+            </div>
+            <div class="filter-list-block" id="stretch_list_container">
+                <ul class="list-group" id="river_stretches">
+                    {% for river_stretch in river_stretches %}
+                    <li class="list-group-item" onclick="populateStretchName(this)">{{ river_stretch }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    <!-- END RIVER STRETCH NAME -->
+            
+    </div>
+</div>
+</div>
+
